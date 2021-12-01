@@ -10,8 +10,7 @@ object API {
     private val client = OkHttpClient.Builder()
         .addInterceptor(HttpLoggingInterceptor().apply {
             setLevel(HttpLoggingInterceptor.Level.BODY)
-        })
-        .addInterceptor(AuthInterceptor())
+        }).addInterceptor(AuthInterceptor())
         .build()
 
     private val retrofit = Retrofit.Builder()

@@ -13,7 +13,7 @@ data class BaseResponse(
     @SerializedName("copyright")
     val copyright: String? = null,
     @SerializedName("data")
-    val `data`: Data? = null,
+    val data: Data? = null,
     @SerializedName("etag")
     val etag: String? = null,
     @SerializedName("status")
