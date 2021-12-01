@@ -14,16 +14,19 @@ import kotlinx.coroutines.launch
 
 class MainViewModel : BaseViewModel() {
 
-    private val repository: MarvelRepository = MarvelRepositoryImpl()
+//    private val repository: MarvelRepository = MarvelRepositoryImpl()
+//
+//    val character: LiveData<List<CharactersEntity?>> = repository.getCharacters().asLiveData(Dispatchers.IO)
+//
+//    init {
+//        viewModelScope.launch {
+//            repository.loadCharactersFromDataBase()
+//        }
+//
+//
+//    }
 
-    val character: LiveData<List<CharactersEntity?>> = repository.getCharacters().asLiveData(Dispatchers.IO)
 
-    init {
-        viewModelScope.launch {
-            repository.loadCharactersFromDataBase()
-        }
-
-    }
 
     fun getChar() {
         // collectValue(repository.getCharacters(),character)

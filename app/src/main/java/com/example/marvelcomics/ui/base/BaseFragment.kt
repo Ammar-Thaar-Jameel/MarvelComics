@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
+import com.example.marvelcomics.BR
 
 abstract class BaseFragment<VDB : ViewDataBinding> : Fragment() {
 
@@ -21,7 +22,7 @@ abstract class BaseFragment<VDB : ViewDataBinding> : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = inflate(inflater, container, false)
-       // _binding.setVariable(BR.viewModel, viewModel)
+        _binding.setVariable(BR.viewModel, viewModel)
         _binding.lifecycleOwner = this
         return _binding.root
     }
