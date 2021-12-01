@@ -16,6 +16,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.homeRecycler.adapter =
+            CharacterAdapter(viewModel.character.value?.toData() ?: emptyList(),viewModel)
 
     }
 }

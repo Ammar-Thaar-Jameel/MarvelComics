@@ -7,7 +7,7 @@
 
         <variable
             name="item"
-            type="com.example.marvelcomics.data.lacal.entity.CharactersEntity" />
+            type="com.example.marvelcomics.domain.models.Character" />
 
         <variable
             name="listener"
@@ -35,6 +35,7 @@
                 android:layout_height="0dp"
                 android:elevation="16dp"
                 android:scaleType="centerCrop"
+                app:image="@{item.imageUrl}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
@@ -79,6 +80,7 @@
                     android:textColor="@color/white"
                     android:textSize="@dimen/text8"
                     android:textStyle="bold"
+                    android:text="@{item.description}"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/character_name"
                     tools:ignore="SmallSp"
