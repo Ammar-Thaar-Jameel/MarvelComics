@@ -6,7 +6,7 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.marvelcomics.R
-import com.example.marvelcomics.model.State
+import com.example.marvelcomics.data.remote.State
 import com.example.marvelcomics.ui.base.BaseAdapter
 import com.google.android.material.imageview.ShapeableImageView
 
