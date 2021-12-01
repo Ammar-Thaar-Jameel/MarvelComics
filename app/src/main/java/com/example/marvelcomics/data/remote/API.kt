@@ -1,4 +1,4 @@
-package com.example.marvelcomics.model.network
+package com.example.marvelcomics.data.remote
 
 import com.example.marvelcomics.utils.Constant.BASE_URL
 import okhttp3.OkHttpClient

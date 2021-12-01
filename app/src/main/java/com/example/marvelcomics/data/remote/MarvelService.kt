@@ -1,6 +1,6 @@
-package com.example.marvelcomics.model.network
+package com.example.marvelcomics.data.remote
 
-import com.example.marvelcomics.model.response.CharactersDto
+import com.example.marvelcomics.data.remote.response.CharactersDto
 import retrofit2.Response
 import retrofit2.http.GET
 

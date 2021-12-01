@@ -1,14 +1,14 @@
-package com.example.marvelcomics.domain.repository
+package com.example.marvelcomics.domain
 
-import com.example.marvelcomics.model.State
-import com.example.marvelcomics.model.network.API
-import com.example.marvelcomics.model.response.CharactersDto
+import com.example.marvelcomics.data.remote.State
+import com.example.marvelcomics.data.remote.API
+import com.example.marvelcomics.data.remote.response.CharactersDto
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import retrofit2.Response
 
-class MarvelRepositoryImpl:MarvelRepository {
+class MarvelRepositoryImpl: MarvelRepository {
 
     override fun getCharacters(): Flow<State<CharactersDto?>> {
         return wrapWithFlow { API.apiService.getCharacters() }

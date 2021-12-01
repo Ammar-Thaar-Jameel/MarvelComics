@@ -1,6 +1,5 @@
-package com.example.marvelcomics.model.network
+package com.example.marvelcomics.data.remote
 
-import android.util.Log
 import com.example.marvelcomics.utils.Constant
 import com.example.marvelcomics.utils.md5
 import okhttp3.Interceptor

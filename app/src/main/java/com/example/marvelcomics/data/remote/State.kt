@@ -1,4 +1,4 @@
-package com.example.marvelcomics.model
+package com.example.marvelcomics.data.remote
 
 sealed class State<out T> {
     data class Success<T>(val data: T) : State<T>()

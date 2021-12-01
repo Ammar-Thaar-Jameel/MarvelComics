@@ -1,15 +1,15 @@
-package com.example.marvelcomics.model.response
+package com.example.marvelcomics.data.remote.response
 
 
 import com.google.gson.annotations.SerializedName
 
-data class Comics(
+data class Series(
     @SerializedName("available")
     val available: Int? = null,
     @SerializedName("collectionURI")
     val collectionURI: String? = null,
     @SerializedName("items")
-    val items: List<Item>? = null,
+    val items: List<ItemXX>? = null,
     @SerializedName("returned")
     val returned: Int? = null
 )
