@@ -3,7 +3,7 @@ package com.example.marvelcomics.model.response
 
 import com.google.gson.annotations.SerializedName
 
-data class charactersDto(
+data class CharactersDto(
     @SerializedName("comics")
     val comics: Comics? = null,
     @SerializedName("description")

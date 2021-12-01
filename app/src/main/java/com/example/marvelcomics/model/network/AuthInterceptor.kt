@@ -1,5 +1,6 @@
 package com.example.marvelcomics.model.network
 
+import android.util.Log
 import com.example.marvelcomics.utils.Constant
 import com.example.marvelcomics.utils.md5
 import okhttp3.Interceptor
@@ -10,7 +11,7 @@ class AuthInterceptor : Interceptor {
         val timestamp = System.currentTimeMillis().toString()
         val publicApiKey = Constant.PUBLIC_API_KEY
         val privateApiKey = Constant.PRIVATE_API_KEY
-        val hash = "$timestamp+$publicApiKey+$privateApiKey".md5()
+        val hash = "$timestamp$publicApiKey$privateApiKey".md5()
 
         with(chain.request()) {
             url.newBuilder().apply {
