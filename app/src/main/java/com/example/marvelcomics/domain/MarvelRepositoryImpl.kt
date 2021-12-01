@@ -1,23 +1,42 @@
 package com.example.marvelcomics.domain
 
-import com.example.marvelcomics.data.remote.State
+import android.util.Log
+import com.example.marvelcomics.data.lacal.MarvelDataBase
+import com.example.marvelcomics.data.lacal.entity.CharactersEntity
 import com.example.marvelcomics.data.remote.API
-import com.example.marvelcomics.data.remote.response.CharactersDto
+import com.example.marvelcomics.data.remote.State
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import retrofit2.Response
 
-class MarvelRepositoryImpl: MarvelRepository {
+class MarvelRepositoryImpl : MarvelRepository {
 
-    override fun getCharacters(): Flow<State<CharactersDto?>> {
-        return wrapWithFlow { API.apiService.getCharacters() }
+    val charactersDao = MarvelDataBase.getInstance.marvelCharactersDao()
+
+    override fun getCharacters(): Flow<List<CharactersEntity>> {
+        return charactersDao.getCharacters()
     }
 
+    override suspend fun loadCharactersFromDataBase() {
+        try {
+
+            val response = API.apiService.getCharacters()
+            Log.i("ddd",response.body()?.results.toString())
+            val items = response.body()?.results?.map {
+                Log.i("www", it.name.toString())
+                CharactersEntity(
+                    id = it.id?.toLong() ?: 0L,
+                    name = it.name ?: "",
 
 
+                    )
+            }
+            items?.let { charactersDao.addCharacters(it) }
+        } catch (e: Exception) {
+        }
 
-
+    }
 
 
     private fun <T> wrapWithFlow(function: suspend () -> Response<T>): Flow<State<T?>> =
