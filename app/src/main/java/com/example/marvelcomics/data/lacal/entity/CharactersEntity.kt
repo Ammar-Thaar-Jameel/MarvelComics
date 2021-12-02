@@ -8,8 +8,8 @@ data class CharactersEntity(
     @PrimaryKey
     var id:Long,
     val name:String,
-//    val description:String,
-//    val modified:String,
-//    val imageUrl:String
+    val description:String,
+    val modified:String,
+    val imageUrl:String
 
 )

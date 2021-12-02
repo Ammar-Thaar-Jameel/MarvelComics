@@ -17,7 +17,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.homeRecycler.adapter =
-            CharacterAdapter(viewModel.character.value?.toData() ?: emptyList(),viewModel)
+            CharacterAdapter(viewModel.character?: emptyList(),viewModel)
 
     }
 }

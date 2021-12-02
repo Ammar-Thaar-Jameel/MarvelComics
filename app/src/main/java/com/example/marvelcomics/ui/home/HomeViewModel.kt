@@ -13,15 +13,15 @@ import com.example.marvelcomics.domain.MarvelRepositoryImpl
 import com.example.marvelcomics.domain.models.Character
 import com.example.marvelcomics.ui.base.BaseViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
 
 class HomeViewModel : BaseViewModel(),HomeInteractionListener {
 
     private val repository: MarvelRepository = MarvelRepositoryImpl()
 
-    val character:LiveData<State<List<Character>?>> = repository.getCharacters().asLiveData(Dispatchers.IO)
+    val character: List<Character>? = repository.getCharacterstoobject()
 
 
-    //val character = MutableLiveData<State<BaseResponse?>>()
     val comics = MutableLiveData<State<Data?>>()
 
     init {

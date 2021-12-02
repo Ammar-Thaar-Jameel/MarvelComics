@@ -34,7 +34,7 @@ fun <T> setRecyclerItems(view: RecyclerView?, items: List<T>?) {
 fun setImage(view: ShapeableImageView?, imagePath: String?) {
     view?.let {
         Glide.with(view)
-            .load(Constant.BASE_IMAGE_URL)
+            .load(imagePath)
             .placeholder(R.drawable.ic_baseline_downloading_24)
             .centerCrop()
             .error(R.drawable.ic_baseline_error_outline_24)
