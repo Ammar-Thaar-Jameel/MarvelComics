@@ -3,7 +3,7 @@ package com.example.marvelcomics.data.remote.response
 
 import com.google.gson.annotations.SerializedName
 
-data class Data(
+data class Data<T>(
     @SerializedName("count")
     val count: Int? = null,
     @SerializedName("limit")
@@ -11,7 +11,7 @@ data class Data(
     @SerializedName("offset")
     val offset: Int? = null,
     @SerializedName("results")
-    val results: List<CharactersDto>? = null,
+    val results: List<T>? = null,
     @SerializedName("total")
     val total: Int? = null
 )

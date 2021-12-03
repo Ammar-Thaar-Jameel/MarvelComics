@@ -20,7 +20,7 @@ interface MarvelService {
 //    suspend fun getAllCharacters(): Response<BaseResponse>
 
     @GET("characters")
-    suspend fun getAllCharacters(): Response<BaseResponse>
+    suspend fun getAllCharacters(): Response<BaseResponse<CharactersDto>>
 
 //    @GET("characters")
 //    suspend fun getAllComics(

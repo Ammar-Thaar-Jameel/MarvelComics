@@ -22,7 +22,7 @@ class HomeViewModel : BaseViewModel(),HomeInteractionListener {
 
 
     //val character = MutableLiveData<State<BaseResponse?>>()
-    val comics = MutableLiveData<State<Data?>>()
+  //  val comics = MutableLiveData<State<Data?>>()
 
     init {
         getAllCharectores()
