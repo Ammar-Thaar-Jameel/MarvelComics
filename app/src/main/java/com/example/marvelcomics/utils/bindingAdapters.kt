@@ -8,6 +8,7 @@ import com.bumptech.glide.Glide
 import com.example.marvelcomics.R
 import com.example.marvelcomics.data.remote.State
 import com.example.marvelcomics.ui.base.BaseAdapter
+import com.example.marvelcomics.ui.home.adapter.HomeNestedAdapter
 import com.google.android.material.imageview.ShapeableImageView
 
 @BindingAdapter(value = ["app:showWhenLoading"])
@@ -42,3 +43,8 @@ fun setImage(view: ShapeableImageView?, imagePath: String?) {
             .into(view)
     }
 }
+
+//@BindingAdapter(value = ["app:nested"])
+//fun <T> setRecyclerItemsNested(view: RecyclerView?, items: List<T>?,index:Int) {
+//    (view?.adapter as HomeNestedAdapter?)?.setItemsAt(items?: emptyList(),index)//setItems(items ?: emptyList())
+//}

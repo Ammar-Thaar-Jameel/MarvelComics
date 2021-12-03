@@ -22,6 +22,8 @@ abstract class BaseAdapter<T>(
         changResult.dispatchUpdatesTo(this)
     }
 
+    open val layoutIDs: List<Int>? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder =
         ItemViewHolder(
             DataBindingUtil.inflate(

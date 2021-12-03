@@ -8,6 +8,11 @@
         <variable
             name="viewModel"
             type="com.example.marvelcomics.ui.home.HomeViewModel" />
+
+        <variable
+            name="adapter"
+            type="com.example.marvelcomics.ui.home.adapter.HomeNestedAdapter" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,14 +25,13 @@
             android:layout_height="0dp"
             android:layout_margin="@dimen/margin8dp"
             android:visibility="visible"
-            app:items="@{viewModel.character.toData()}"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:adapter="@{adapter}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:spanCount="3"
-            tools:listitem="@layout/item_home" />
+            tools:listitem="@layout/item_home_recycler" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
