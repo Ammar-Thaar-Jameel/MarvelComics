@@ -4,6 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <variable
+            name="viewModel"
+            type="com.example.marvelcomics.ui.search.SearchViewModel" />
 
     </data>
 
@@ -62,6 +65,8 @@
             android:layout_height="50dp"
             android:layout_margin="@dimen/margin8dp"
             android:inputType="text"
+            android:text="@={viewModel.characterName}"
+            android:afterTextChanged="@{()->viewModel.searchForCharacter()}"
             android:paddingStart="@dimen/margin16dp"
             android:transitionName="@string/search_transition"
             app:layout_constraintEnd_toEndOf="parent"
@@ -85,6 +90,7 @@
             android:layout_height="0dp"
             android:layout_margin="@dimen/margin8dp"
             android:visibility="visible"
+            app:items="@{viewModel.characterSearchResult.toData().data.results}"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/break_line"
