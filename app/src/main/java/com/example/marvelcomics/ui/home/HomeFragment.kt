@@ -33,38 +33,31 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         )
         val adapter = HomeNestedAdapter(items, viewModel)
 
-        viewModel.character.observe(this, { state ->
-            if (state is State.Success) {
-                state.data?.let { data ->
-                    adapter.setItemsAt(data, ViewType.CHARACTER.index)
-                }
-            }
+        viewModel.transfer.observe(this, { state ->
+
+                    adapter.setItemsAt(state as List<Character>, ViewType.CHARACTER.index)
+
+
+        })
+        viewModel.transfer.observe(this, { state ->
+
+            adapter.setItemsAt(state as List<Character>, ViewType.CHARACTERTWO.index)
+
+
+        })
+        viewModel.transfer.observe(this, { state ->
+
+            adapter.setItemsAt(state as List<Character>, ViewType.CHARACTERTHREE.index)
+
+
+        })
+        viewModel.transfer.observe(this, { state ->
+
+            adapter.setItemsAt(state as List<Character>, ViewType.CHARACTERF.index)
+
 
         })
 
-        viewModel.character.observe(this, { state ->
-            if (state is State.Success) {
-                state.data?.let { data ->
-                    adapter.setItemsAt(data, ViewType.CHARACTERTWO.index)
-                }
-            }
-        })
-
-        viewModel.character.observe(this, { state ->
-            if (state is State.Success) {
-                state.data?.let { data ->
-                    adapter.setItemsAt(data, ViewType.CHARACTERTHREE.index)
-                }
-            }
-        })
-
-        viewModel.character.observe(this, { state ->
-            if (state is State.Success) {
-                state.data?.let { data ->
-                    adapter.setItemsAt(data, ViewType.CHARACTERF.index)
-                }
-            }
-        })
 
         binding.adapter = adapter
     }

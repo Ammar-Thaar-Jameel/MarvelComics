@@ -1,5 +1,5 @@
 package com.example.marvelcomics.domain.mapper
 
-interface Mapper<Input, Output> {
+interface BaseMapper<Input, Output> {
     fun map(input: Input): Output
 }

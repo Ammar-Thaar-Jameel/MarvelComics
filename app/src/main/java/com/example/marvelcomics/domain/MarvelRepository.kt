@@ -9,12 +9,15 @@ import kotlinx.coroutines.flow.Flow
 
 interface MarvelRepository {
 
-    fun getCharacters(): Flow<State<List<Character>?>>
+
 
     fun getCharactersByName(characterName: String): Flow<State<BaseResponse<Data<CharactersDto>>?>>
 
-//        fun getAllCharacters():Flow<State<BaseResponse?>>
-//        fun getAllComics(text:String):Flow<State<Data?>>
 
-//        suspend fun loadCharactersFromDataBase()
+
+    suspend fun cachingCharactersInDataBase()
+
+    suspend fun transferDataFromEntityToCharacter(): List<Character>
+
+
 }

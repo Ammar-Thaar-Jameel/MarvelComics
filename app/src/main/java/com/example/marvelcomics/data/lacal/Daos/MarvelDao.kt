@@ -14,5 +14,5 @@ interface MarvelDao {
     suspend fun addCharacters(items: List<CharactersEntity>)
 
     @Query("SELECT * FROM CharactersEntity")
-    fun getCharacters(): Flow<List<CharactersEntity>>
+    suspend fun getCharacters(): List<CharactersEntity>
 }

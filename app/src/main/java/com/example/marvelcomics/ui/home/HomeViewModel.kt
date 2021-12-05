@@ -1,47 +1,37 @@
 package com.example.marvelcomics.ui.home
 
-import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.asLiveData
-import com.example.marvelcomics.data.remote.State
-import com.example.marvelcomics.data.remote.response.BaseResponse
-import com.example.marvelcomics.data.remote.response.CharactersDto
-import com.example.marvelcomics.data.remote.response.Data
+import androidx.lifecycle.viewModelScope
 import com.example.marvelcomics.domain.MarvelRepository
 import com.example.marvelcomics.domain.MarvelRepositoryImpl
 import com.example.marvelcomics.domain.models.Character
 import com.example.marvelcomics.ui.base.BaseViewModel
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
-class HomeViewModel : BaseViewModel(),HomeInteractionListener {
+class HomeViewModel : BaseViewModel(), HomeInteractionListener {
 
     private val repository: MarvelRepository = MarvelRepositoryImpl()
 
-    val character:LiveData<State<List<Character>?>> = repository.getCharacters().asLiveData(Dispatchers.IO)
 
+    val transfer = MutableLiveData<List<Character>>()
 
-    //val character = MutableLiveData<State<BaseResponse?>>()
-  //  val comics = MutableLiveData<State<Data?>>()
 
     init {
-        getAllCharectores()
-        getAllComics()
+
+        viewModelScope.launch {
+            caching()
+        }
+
+
     }
 
-    private fun getAllComics() {
-//        val x=repository.getAllComics("Ironman")
-//        collectValue(x,comics)
-//        Log.v("comics",x.toString())
+    private fun caching() {
+        viewModelScope.launch {
+            repository.cachingCharactersInDataBase()
+            transfer.postValue(repository.transferDataFromEntityToCharacter())
+        }
     }
-
-    fun getAllCharectores() {
-     //   collectValue(repository.getAllCharacters(), character)
-//        viewModelScope.launch {
-//            val resopnse=repository.getAllCharacters()
-//            Log.i("base",resopnse.toString())
-//        }
-    }
-
 
 }
+
+
