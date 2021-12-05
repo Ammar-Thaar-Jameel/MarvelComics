@@ -19,10 +19,11 @@ import javax.inject.Inject
 class MarvelRepositoryImpl @Inject constructor(
     private val apiService: MarvelService,
     private val characterDtoToEntity: CharacterDtoToEntity,
-    private val characterEntityToCharacter: CharacterEntityToCharacter
+    private val characterEntityToCharacter: CharacterEntityToCharacter,
+    private val marvelDataBase: MarvelDataBase
 ) : MarvelRepository {
 
-    private val charactersDao = MarvelDataBase.getInstance.marvelCharactersDao()
+
 
 
     override fun getCharactersByName(characterName: String): Flow<State<BaseResponse<Data<CharactersDto>>?>> {
@@ -37,14 +38,14 @@ class MarvelRepositoryImpl @Inject constructor(
                 characterDtoToEntity.map(charactersDto)
 
             }
-            items?.let { charactersDao.addCharacters(it) }
+            items?.let { marvelDataBase.marvelCharactersDao().addCharacters(it) }
         } catch (e: Exception) {
         }
     }
 
 
     override suspend fun transferDataFromEntityToCharacter(): List<Character> {
-        return charactersDao.getCharacters().map {
+        return marvelDataBase.marvelCharactersDao().getCharacters().map {
             characterEntityToCharacter.map(it)
         }
     }

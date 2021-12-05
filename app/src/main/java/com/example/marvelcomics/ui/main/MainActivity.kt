@@ -13,10 +13,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>() {
    // override val theme = R.style.Theme_MarvelComics
     override val viewID = R.layout.activity_main
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        MarvelDataBase.getInstance(applicationContext)
-    }
+
 
 
     override fun onResume() {
