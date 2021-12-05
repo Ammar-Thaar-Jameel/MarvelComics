@@ -2,9 +2,10 @@ package com.example.marvelcomics.domain.mapper
 
 import com.example.marvelcomics.data.lacal.entity.CharactersEntity
 import com.example.marvelcomics.domain.models.Character
+import javax.inject.Inject
 
 
-class CharacterEntityToCharacter : BaseMapper<CharactersEntity, Character> {
+class CharacterEntityToCharacter @Inject constructor() : BaseMapper<CharactersEntity, Character> {
     override fun map(input: CharactersEntity): Character {
         return Character(
             id = input.id,

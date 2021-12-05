@@ -10,7 +10,7 @@ import com.example.marvelcomics.BR
 
 abstract class BaseActivity<VDB : ViewDataBinding> : AppCompatActivity() {
 
-    abstract val theme: Int
+    //abstract val theme: Int
     abstract val viewID: Int
     private lateinit var _binding: VDB
     protected val binding get() = _binding

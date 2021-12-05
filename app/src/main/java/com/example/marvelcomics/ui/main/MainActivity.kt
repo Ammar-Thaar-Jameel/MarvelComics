@@ -11,7 +11,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>() {
-    override val theme = R.style.Theme_MarvelComics
+   // override val theme = R.style.Theme_MarvelComics
     override val viewID = R.layout.activity_main
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

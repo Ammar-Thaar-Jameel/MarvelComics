@@ -14,7 +14,6 @@ interface MarvelRepository {
     fun getCharactersByName(characterName: String): Flow<State<BaseResponse<Data<CharactersDto>>?>>
 
 
-
     suspend fun cachingCharactersInDataBase()
 
     suspend fun transferDataFromEntityToCharacter(): List<Character>

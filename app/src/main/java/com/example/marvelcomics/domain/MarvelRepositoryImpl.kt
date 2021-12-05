@@ -2,7 +2,7 @@ package com.example.marvelcomics.domain
 
 import android.util.Log
 import com.example.marvelcomics.data.lacal.MarvelDataBase
-import com.example.marvelcomics.data.remote.API
+import com.example.marvelcomics.data.remote.MarvelService
 import com.example.marvelcomics.data.remote.State
 import com.example.marvelcomics.data.remote.response.BaseResponse
 import com.example.marvelcomics.data.remote.response.CharactersDto
@@ -14,23 +14,24 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import retrofit2.Response
+import javax.inject.Inject
 
-class MarvelRepositoryImpl : MarvelRepository {
+class MarvelRepositoryImpl @Inject constructor(
+    private val apiService: MarvelService,
+    private val characterDtoToEntity: CharacterDtoToEntity,
+    private val characterEntityToCharacter: CharacterEntityToCharacter
+) : MarvelRepository {
 
     private val charactersDao = MarvelDataBase.getInstance.marvelCharactersDao()
 
-    private val characterDtoToEntity = CharacterDtoToEntity()
-
-    val characterEntityToCharacter = CharacterEntityToCharacter()
-
 
     override fun getCharactersByName(characterName: String): Flow<State<BaseResponse<Data<CharactersDto>>?>> {
-        return wrapWithFlow { API.apiService.getCharactersByName(characterName) }
+        return wrapWithFlow { apiService.getCharactersByName(characterName) }
     }
 
     override suspend fun cachingCharactersInDataBase() {
         try {
-            val response = API.apiService.getAllCharacters()
+            val response = apiService.getAllCharacters()
 
             val items = response.body()?.data?.results?.map { charactersDto ->
                 characterDtoToEntity.map(charactersDto)
