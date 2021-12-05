@@ -8,10 +8,15 @@ import com.example.marvelcomics.data.remote.response.Data
 import com.example.marvelcomics.domain.MarvelRepository
 import com.example.marvelcomics.domain.MarvelRepositoryImpl
 import com.example.marvelcomics.ui.base.BaseViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class SearchViewModel : BaseViewModel(),SearchInteractionListener {
+@HiltViewModel
+class SearchViewModel @Inject constructor(
+    private val repository: MarvelRepository
+) : BaseViewModel(), SearchInteractionListener {
 
-    private val repository: MarvelRepository = MarvelRepositoryImpl()
+
 
     var characterSearchResult = MutableLiveData<State<BaseResponse<Data<CharactersDto>>?>>()
 
