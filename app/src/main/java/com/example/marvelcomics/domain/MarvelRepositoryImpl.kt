@@ -49,29 +49,27 @@ class MarvelRepositoryImpl : MarvelRepository {
     }
 
 
-}
+    private fun <T> wrapWithFlow(function: suspend () -> Response<T>): Flow<State<T?>> =
+        flow {
 
-
-private fun <T> wrapWithFlow(function: suspend () -> Response<T>): Flow<State<T?>> =
-    flow {
-
-        emit(State.Loading)
-        emit(checkIfSuccessful(function()))
-    }.catch {
-        emit(State.Error(it.message.toString()))
-    }
-
-private fun <T> checkIfSuccessful(result: Response<T>): State<T?> =
-    try {
-        if (result.isSuccessful) {
-            Log.v("result", result.body().toString())
-            State.Success(result.body())
-
-        } else {
-            Log.v("error", result.body().toString())
-            State.Error(result.message())
+            emit(State.Loading)
+            emit(checkIfSuccessful(function()))
+        }.catch {
+            emit(State.Error(it.message.toString()))
         }
-    } catch (e: Exception) {
-        Log.v("e", e.toString())
-        State.Error(e.message.toString())
-    }
+
+    private fun <T> checkIfSuccessful(result: Response<T>): State<T?> =
+        try {
+            if (result.isSuccessful) {
+                Log.v("result", result.body().toString())
+                State.Success(result.body())
+
+            } else {
+                Log.v("error", result.body().toString())
+                State.Error(result.message())
+            }
+        } catch (e: Exception) {
+            Log.v("e", e.toString())
+            State.Error(e.message.toString())
+        }
+}
