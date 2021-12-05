@@ -21,6 +21,7 @@ class MarvelRepositoryImpl @Inject constructor(
     private val characterDtoToEntity: CharacterDtoToEntity,
     private val characterEntityToCharacter: CharacterEntityToCharacter,
     private val marvelDataBase: MarvelDataBase
+
 ) : MarvelRepository {
 
 
