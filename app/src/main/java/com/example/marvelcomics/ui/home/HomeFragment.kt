@@ -12,7 +12,9 @@ import com.example.marvelcomics.domain.models.Character
 import com.example.marvelcomics.ui.base.BaseFragment
 import com.example.marvelcomics.ui.home.adapter.CharacterAdapter
 import com.example.marvelcomics.ui.home.adapter.HomeNestedAdapter
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override val viewModel: HomeViewModel by activityViewModels()
     override val inflate: (LayoutInflater, ViewGroup?, attachToRoot: Boolean) -> FragmentHomeBinding =

@@ -1,12 +1,15 @@
-package com.example.marvelcomics
+package com.example.marvelcomics.ui.main
 
 import android.os.Bundle
 import androidx.navigation.findNavController
+import com.example.marvelcomics.R
 import com.example.marvelcomics.data.lacal.MarvelDataBase
 import com.example.marvelcomics.databinding.ActivityMainBinding
 import com.example.marvelcomics.ui.base.BaseActivity
 import com.example.marvelcomics.utils.onNavDestinationSelected
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>() {
     override val theme = R.style.Theme_MarvelComics
     override val viewID = R.layout.activity_main

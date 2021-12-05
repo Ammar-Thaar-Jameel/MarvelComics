@@ -1,4 +1,4 @@
-package com.example.marvelcomics
+package com.example.marvelcomics.ui.main
 
 import android.util.Log
 import androidx.lifecycle.LiveData
