@@ -2,9 +2,8 @@ package com.example.marvelcomics.data.lacal.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-
 @Entity
-data class CharactersEntity(
+data class CharacterSearchEntity(
     @PrimaryKey
     var id: Long,
     var name: String,

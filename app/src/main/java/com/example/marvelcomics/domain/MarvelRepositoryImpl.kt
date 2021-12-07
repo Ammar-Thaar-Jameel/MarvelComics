@@ -4,11 +4,9 @@ import android.util.Log
 import com.example.marvelcomics.data.lacal.MarvelDataBase
 import com.example.marvelcomics.data.remote.MarvelService
 import com.example.marvelcomics.data.remote.State
-import com.example.marvelcomics.data.remote.response.BaseResponse
-import com.example.marvelcomics.data.remote.response.CharactersDto
-import com.example.marvelcomics.data.remote.response.Data
 import com.example.marvelcomics.domain.mapper.BaseMapper
 import com.example.marvelcomics.domain.models.Character
+import com.example.marvelcomics.domain.models.CharacterSearchResult
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
@@ -23,9 +21,9 @@ class MarvelRepositoryImpl @Inject constructor(
 ) : MarvelRepository {
 
 
-    override fun getCharactersByName(characterName: String): Flow<State<BaseResponse<Data<CharactersDto>>?>> {
-        return wrapWithFlow { apiService.getCharactersByName(characterName) }
-    }
+//    override fun getCharactersByName(characterName: String): Flow<State<BaseResponse<Data<CharactersDto>>?>> {
+//        return wrapWithFlow { apiService.getCharactersByName(characterName) }
+//    }
 
     override suspend fun cachingCharactersInDataBase() {
         try {
@@ -45,6 +43,26 @@ class MarvelRepositoryImpl @Inject constructor(
         return marvelDataBase.marvelCharactersDao().getCharacters().map { charactersEntity ->
             baseMapper.mapCharacterEntityToCharacterDomain(charactersEntity)
         }
+    }
+
+    override suspend fun cachingSearchResult(characterName: String) {
+        try {
+            val response = apiService.getCharactersByName(characterName = characterName)
+
+            val items = response.body()?.data?.results?.map { charactersSearchDto ->
+                baseMapper.mapCharacterDtoSearchToEntity(charactersSearchDto)
+
+            }
+            items?.let { marvelDataBase.marvelCharactersDao().addSearchResult(it) }
+        } catch (e: Exception) {
+        }
+    }
+
+    override suspend fun getSearchResult(): List<CharacterSearchResult> {
+        return marvelDataBase.marvelCharactersDao().getSearchResult()
+            .map { charactersSearchEntity ->
+                baseMapper.mapCharacterSearchEntityToCharacterDomain(charactersSearchEntity)
+            }
     }
 
 

@@ -1,14 +1,12 @@
 package com.example.marvelcomics.ui.search
 
 import androidx.lifecycle.MutableLiveData
-import com.example.marvelcomics.data.remote.State
-import com.example.marvelcomics.data.remote.response.BaseResponse
-import com.example.marvelcomics.data.remote.response.CharactersDto
-import com.example.marvelcomics.data.remote.response.Data
+import androidx.lifecycle.viewModelScope
 import com.example.marvelcomics.domain.MarvelRepository
-import com.example.marvelcomics.domain.MarvelRepositoryImpl
+import com.example.marvelcomics.domain.models.CharacterSearchResult
 import com.example.marvelcomics.ui.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -17,17 +15,27 @@ class SearchViewModel @Inject constructor(
 ) : BaseViewModel(), SearchInteractionListener {
 
 
-
-    var characterSearchResult = MutableLiveData<State<BaseResponse<Data<CharactersDto>>?>>()
+    var characterSearchResult = MutableLiveData<List<CharacterSearchResult>>()
 
     val characterName = MutableLiveData<String?>()
 
 
     fun searchForCharacter() {
-        collectValue(
-            repository.getCharactersByName(characterName.value.toString()),
-            characterSearchResult
-        )
+        viewModelScope.launch {
+            repository.cachingSearchResult(characterName.value.toString())
+
+        }
+
+    }
+
+    fun onStopTaping() {
+
+        viewModelScope.launch {
+            if (characterName.equals(" ")) {
+                characterSearchResult.postValue(repository.getSearchResult())
+            }
+
+        }
 
     }
 }

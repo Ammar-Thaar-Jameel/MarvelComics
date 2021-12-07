@@ -4,10 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.example.marvelcomics.ui.search.SearchViewModel" />
 
+        <variable
+            name="adapter"
+            type="com.example.marvelcomics.ui.base.BaseAdapter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -64,10 +68,10 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_margin="@dimen/margin8dp"
-            android:inputType="text"
-            android:text="@={viewModel.characterName}"
             android:afterTextChanged="@{()->viewModel.searchForCharacter()}"
+            android:inputType="text"
             android:paddingStart="@dimen/margin16dp"
+            android:text="@={viewModel.characterName}"
             android:transitionName="@string/search_transition"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -90,11 +94,12 @@
             android:layout_height="0dp"
             android:layout_margin="@dimen/margin8dp"
             android:visibility="visible"
-            app:items="@{viewModel.characterSearchResult.toData().data.results}"
+            app:adapter="@{adapter}"
+            app:items="@{viewModel.characterSearchResult}"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/break_line"
             app:spanCount="3"
-            tools:listitem="@layout/item_home" />
+            tools:listitem="@layout/item_search" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

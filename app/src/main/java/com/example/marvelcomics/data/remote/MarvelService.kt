@@ -28,5 +28,5 @@ interface MarvelService {
     @GET("characters")
     suspend fun getCharactersByName(
         @Query("nameStartsWith") characterName: String,
-    ): Response<BaseResponse<Data<CharactersDto>>>
+    ): Response<BaseResponse<CharactersDto>>
 }

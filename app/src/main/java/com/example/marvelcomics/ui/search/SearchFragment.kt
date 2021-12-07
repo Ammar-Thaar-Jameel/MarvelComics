@@ -20,6 +20,6 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.searchRecyclerView.adapter =
-            SearchAdapter( emptyList(),viewModel)
+            SearchAdapter(viewModel.characterSearchResult.value ?: emptyList(),viewModel)
     }
 }

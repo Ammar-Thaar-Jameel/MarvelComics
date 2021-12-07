@@ -2,7 +2,7 @@ package com.example.marvelcomics.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.marvelcomics.data.lacal.Daos.MarvelDao
+import com.example.marvelcomics.data.lacal.dao.MarvelDao
 import com.example.marvelcomics.data.lacal.MarvelDataBase
 import dagger.Module
 import dagger.Provides
