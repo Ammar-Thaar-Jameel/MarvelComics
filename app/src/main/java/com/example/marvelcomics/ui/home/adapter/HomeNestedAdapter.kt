@@ -30,7 +30,7 @@ class HomeNestedAdapter(
                 _listener
             )
 
-            ViewType.CHARACTERTWO -> CharacterAdapter(
+            ViewType.CHARACTERTWO -> CharacterTopAdapter(
                 _items[position] as List<Character>,
                 _listener
             )

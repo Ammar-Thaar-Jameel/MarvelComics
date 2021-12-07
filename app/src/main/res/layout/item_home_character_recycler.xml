@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.marvelcomics.ui.home.HomeViewModel" />
+
+        <variable
+            name="adapter"
+            type="com.example.marvelcomics.ui.base.BaseAdapter" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/type_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin1x"
+            android:layout_marginTop="@dimen/margin8dp"
+            android:gravity="left"
+            android:text="CHARACTER"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/character_recycler"
+            app:layout_constraintLeft_toLeftOf="@id/character_recycler" />
+
+        <TextView
+            android:id="@+id/show_more"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin8dp"
+            android:layout_marginEnd="@dimen/margin1x"
+            android:gravity="right"
+            android:text="Show more"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/character_recycler"
+            app:layout_constraintRight_toRightOf="@id/character_recycler" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/character_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:adapter="@{adapter}"
+            app:items="@{viewModel.transfer}"
+            android:layout_marginTop="@dimen/margin16dp"
+            android:layout_marginHorizontal="@dimen/margin4dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:listitem="@layout/item_home_character_top" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
