@@ -29,6 +29,16 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_margin="@dimen/margin8dp"
+                android:background="@drawable/ic_baseline_favorite_border_24"
+                android:elevation="@dimen/margin8dp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/item_image"
                 android:layout_width="0dp"
@@ -77,10 +87,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/margin4dp"
                     android:layout_marginTop="@dimen/margin2dp"
+                    android:text="@{item.description}"
                     android:textColor="@color/white"
                     android:textSize="@dimen/text8"
                     android:textStyle="bold"
-                    android:text="@{item.description}"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/character_name"
                     tools:ignore="SmallSp"

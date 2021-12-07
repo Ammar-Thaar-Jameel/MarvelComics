@@ -44,7 +44,3 @@ fun setImage(view: ShapeableImageView?, imagePath: String?) {
     }
 }
 
-//@BindingAdapter(value = ["app:nested"])
-//fun <T> setRecyclerItemsNested(view: RecyclerView?, items: List<T>?,index:Int) {
-//    (view?.adapter as HomeNestedAdapter?)?.setItemsAt(items?: emptyList(),index)//setItems(items ?: emptyList())
-//}
