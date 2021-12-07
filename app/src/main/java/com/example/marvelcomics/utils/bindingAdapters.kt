@@ -31,11 +31,11 @@ fun <T> setRecyclerItems(view: RecyclerView?, items: List<T>?) {
     (view?.adapter as BaseAdapter<T>?)?.setItems(items ?: emptyList())
 }
 
-@BindingAdapter(value = ["app:image"])
-fun setImage(view: ShapeableImageView?, imagePath: String?) {
+@BindingAdapter(value = ["app:imagePath","app:imageExtension"])
+fun setImage(view: ShapeableImageView?, imagePath: String?,imageExtension:String?) {
     view?.let {
         Glide.with(view)
-            .load(imagePath)
+            .load("${imagePath}.${imageExtension}")
             .placeholder(R.drawable.ic_baseline_downloading_24)
             .centerCrop()
             .error(R.drawable.ic_baseline_error_outline_24)
