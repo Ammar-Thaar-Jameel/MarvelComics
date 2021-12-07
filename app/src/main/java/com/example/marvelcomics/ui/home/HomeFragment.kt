@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import com.example.marvelcomics.data.remote.response.Comics
 import com.example.marvelcomics.data.remote.response.Data
 import com.example.marvelcomics.databinding.FragmentHomeBinding
 import com.example.marvelcomics.domain.models.Character
@@ -28,7 +29,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         val items = mutableListOf(
             emptyList<Character>(),
             emptyList<Data<Character>>(),
-            emptyList<Character>(),
+            emptyList<Comics>(),
             emptyList<Character>()
         )
         val adapter = HomeNestedAdapter(items, viewModel)

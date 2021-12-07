@@ -4,6 +4,7 @@ plugins {
     id 'androidx.navigation.safeargs.kotlin'
     id "dagger.hilt.android.plugin"
     id 'kotlin-kapt'
+    id "com.diffplug.eclipse.apt" version "3.26.0"
 }
 
 
@@ -98,4 +99,11 @@ dependencies {
     //hilt DI
     implementation("com.google.dagger:hilt-android:2.38.1")
     kapt("com.google.dagger:hilt-android-compiler:2.38.1")
+
+    // MAPSTRUCT
+    def map_Struct = "1.5.0.Beta1"
+    implementation "org.mapstruct:mapstruct:$map_Struct"
+    annotationProcessor "org.mapstruct:mapstruct-processor:$map_Struct"
+    testAnnotationProcessor "org.mapstruct:mapstruct-processor:$map_Struct"
+    kapt("org.mapstruct:mapstruct-processor:$map_Struct")
 }

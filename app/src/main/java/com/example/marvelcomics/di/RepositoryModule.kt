@@ -4,12 +4,12 @@ import com.example.marvelcomics.data.lacal.MarvelDataBase
 import com.example.marvelcomics.data.remote.MarvelService
 import com.example.marvelcomics.domain.MarvelRepository
 import com.example.marvelcomics.domain.MarvelRepositoryImpl
-import com.example.marvelcomics.domain.mapper.CharacterDtoToEntity
-import com.example.marvelcomics.domain.mapper.CharacterEntityToCharacter
+import com.example.marvelcomics.domain.mapper.BaseMapper
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import org.mapstruct.factory.Mappers
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -18,15 +18,18 @@ object RepositoryModule {
     @Provides
     fun providesRepository(
         apiService: MarvelService,
-        characterDtoToEntity: CharacterDtoToEntity,
-        characterEntityToCharacter: CharacterEntityToCharacter,
-        dataBase: MarvelDataBase
+        dataBase: MarvelDataBase,
+        baseMapper: BaseMapper
     ): MarvelRepository {
         return MarvelRepositoryImpl(
             apiService,
-            characterDtoToEntity,
-            characterEntityToCharacter,
-            dataBase
+            dataBase,
+            baseMapper
+
         )
     }
+
+
+    @Provides
+    fun provideMapper() : BaseMapper = Mappers.getMapper(BaseMapper::class.java)
 }

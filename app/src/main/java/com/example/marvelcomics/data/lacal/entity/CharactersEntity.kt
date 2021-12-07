@@ -10,6 +10,7 @@ data class CharactersEntity(
     var name:String,
     var description:String,
     var modified:String,
-    var imageUrl:String
+    var imageUrlPath:String,
+   var imageUrlExtension:String
 
 )
