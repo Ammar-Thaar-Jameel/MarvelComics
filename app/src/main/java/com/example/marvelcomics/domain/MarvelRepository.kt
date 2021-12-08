@@ -11,16 +11,17 @@ import kotlinx.coroutines.flow.Flow
 interface MarvelRepository {
 
 
-
-   // fun getCharactersByName(characterName: String): Flow<State<BaseResponse<Data<CharactersDto>>?>>
+    // fun getCharactersByName(characterName: String): Flow<State<BaseResponse<Data<CharactersDto>>?>>
 
     suspend fun cachingCharactersInDataBase()
 
     suspend fun transferDataFromEntityToCharacter(): List<Character>
 
-    suspend fun cachingSearchResult(characterName:String)
+    suspend fun cachingSearchResult(characterName: String)
 
-   suspend fun getSearchResult(): List<CharacterSearchResult>
+    suspend fun getSearchResult(): List<CharacterSearchResult>
 
+    //suspend fun getCharacterDetails()
 
+    fun getCharacterDetailsById(characterId: Long): Flow<State<Character>>
 }

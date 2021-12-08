@@ -5,6 +5,7 @@ import com.example.marvelcomics.data.remote.response.CharactersDto
 import com.example.marvelcomics.data.remote.response.Data
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface MarvelService {
@@ -28,5 +29,19 @@ interface MarvelService {
     @GET("characters")
     suspend fun getCharactersByName(
         @Query("nameStartsWith") characterName: String,
+    ): Response<BaseResponse<CharactersDto>>
+
+
+//    @GET("characters")
+//    suspend fun getCharactersById(
+//        @Query("nameStartsWith") characterName: Long,
+//    ): Response<BaseResponse<Data<CharactersDto>>>
+
+
+
+
+    @GET("characters/{characterId}")
+    suspend fun getCharactersById(
+        @Path("characterId") characterId: Long,
     ): Response<BaseResponse<CharactersDto>>
 }

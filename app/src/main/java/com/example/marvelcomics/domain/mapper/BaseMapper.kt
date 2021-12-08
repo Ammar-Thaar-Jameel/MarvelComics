@@ -29,4 +29,8 @@ interface BaseMapper {
     @Mapping(source = "imageUrlExtension", target = "imageUrlExtension")
     fun mapCharacterSearchEntityToCharacterDomain(characterSearchEntity: CharacterSearchEntity): CharacterSearchResult
 
+
+    @Mapping(source = "thumbnail.path", target = "imageUrlPath")
+    @Mapping(source = "thumbnail.extension", target = "imageUrlExtension")
+    fun mapCharacterDtoToCharacterDomain(charactersDto: CharactersDto):Character
 }

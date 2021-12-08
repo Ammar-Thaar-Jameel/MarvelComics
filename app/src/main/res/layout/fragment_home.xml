@@ -13,6 +13,8 @@
             name="adapter"
             type="com.example.marvelcomics.ui.home.adapter.HomeNestedAdapter" />
 
+
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -4,9 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <!--        <variable-->
-        <!--            name="item"-->
-        <!--            type="com.example.marvelcomics.domain.models.Character" />-->
+
         <variable
             name="item"
             type="com.example.marvelcomics.domain.models.CharacterSearchResult" />
@@ -30,7 +28,8 @@
             android:id="@+id/main_constraint"
             style="@style/SearchBar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            >
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/item_image"
@@ -38,8 +37,8 @@
                 android:layout_height="0dp"
                 android:elevation="16dp"
                 android:scaleType="centerCrop"
-                app:imagePath="@{item.imageUrlPath}"
                 app:imageExtension="@{item.imageUrlExtension}"
+                app:imagePath="@{item.imageUrlPath}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"

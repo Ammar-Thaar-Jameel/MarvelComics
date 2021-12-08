@@ -65,6 +65,24 @@ class MarvelRepositoryImpl @Inject constructor(
             }
     }
 
+    override fun getCharacterDetailsById(characterId: Long): Flow<State<Character>> {
+        return flow {
+            emit(State.Loading)
+            try {
+                val result = apiService.getCharactersById(characterId)
+                    .body()?.data?.results?.map { characterList ->
+                        baseMapper.mapCharacterDtoToCharacterDomain(characterList)
+
+                    }
+                result?.let { State.Success(it[0]) }?.let { emit(it) }
+
+            } catch (e: Exception) {
+
+            }
+        }
+
+    }
+
 
     private fun <T> wrapWithFlow(function: suspend () -> Response<T>): Flow<State<T?>> =
         flow {

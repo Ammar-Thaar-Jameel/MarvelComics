@@ -27,7 +27,8 @@
             android:id="@+id/main_constraint"
             style="@style/SearchBar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:onClick="@{()->listener.onItemClicked(item.id)}">
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/item_image"

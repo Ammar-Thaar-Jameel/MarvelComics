@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:adapter="@{adapter}"
-            app:items="@{viewModel.transfer}"
+            app:items="@{viewModel.character}"
             android:layout_marginTop="@dimen/margin16dp"
             android:layout_marginHorizontal="@dimen/margin4dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"

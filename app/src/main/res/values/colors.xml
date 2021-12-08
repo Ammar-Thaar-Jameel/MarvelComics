@@ -20,4 +20,7 @@
 
     <color name="searchStroke">#AACAB3</color>
     <color name="lightGrey">#EBEBEB</color>
+
+    <color name="brandColor">#478859</color>
+    <color name="darkGrey">#8D8D8D</color>
 </resources>
