@@ -1,7 +1,10 @@
 package com.example.marvelcomics.ui.search
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
+import com.example.marvelcomics.data.remote.State
 import com.example.marvelcomics.domain.MarvelRepository
 import com.example.marvelcomics.domain.models.CharacterSearchResult
 import com.example.marvelcomics.ui.base.BaseViewModel
@@ -15,7 +18,11 @@ class SearchViewModel @Inject constructor(
 ) : BaseViewModel(), SearchInteractionListener {
 
 
-    var characterSearchResult = MutableLiveData<List<CharacterSearchResult>>()
+
+
+
+    val characterSearchResult: LiveData<State<List<CharacterSearchResult>>> =
+        repository.getSearchResult().asLiveData()
 
     val characterName = MutableLiveData<String?>()
 
@@ -28,14 +35,4 @@ class SearchViewModel @Inject constructor(
 
     }
 
-    fun onStopTaping() {
-
-        viewModelScope.launch {
-            if (characterName.equals(" ")) {
-                characterSearchResult.postValue(repository.getSearchResult())
-            }
-
-        }
-
-    }
 }

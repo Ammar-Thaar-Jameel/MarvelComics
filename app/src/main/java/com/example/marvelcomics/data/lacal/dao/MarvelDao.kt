@@ -6,6 +6,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.marvelcomics.data.lacal.entity.CharacterSearchEntity
 import com.example.marvelcomics.data.lacal.entity.CharactersEntity
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface MarvelDao {
@@ -18,9 +19,9 @@ interface MarvelDao {
     suspend fun getCharacters(): List<CharactersEntity>
 
 
-    @Insert (onConflict = OnConflictStrategy.REPLACE)
+    @Insert
     suspend fun addSearchResult(items: List<CharacterSearchEntity>)
 
     @Query("SELECT * FROM CharacterSearchEntity")
-    suspend fun getSearchResult():List<CharacterSearchEntity>
+     fun getSearchResult(): Flow<List<CharacterSearchEntity>>
 }

@@ -9,6 +9,7 @@ import com.example.marvelcomics.domain.models.Character
 import com.example.marvelcomics.domain.models.CharacterSearchResult
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
 import retrofit2.Response
 import javax.inject.Inject
@@ -58,12 +59,23 @@ class MarvelRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getSearchResult(): List<CharacterSearchResult> {
-        return marvelDataBase.marvelCharactersDao().getSearchResult()
-            .map { charactersSearchEntity ->
-                baseMapper.mapCharacterSearchEntityToCharacterDomain(charactersSearchEntity)
+    override fun getSearchResult(): Flow<List<CharacterSearchResult>> {
+        return flow {
+            try {
+                marvelDataBase.marvelCharactersDao().getSearchResult().collect {
+                    it.map { characterSearchEntity ->
+                        baseMapper.mapCharacterSearchEntityToCharacterDomain(characterSearchEntity)
+                    }
+                }
+
+
+            } catch (e: Exception) {
+
             }
+
+        }
     }
+
 
     override fun getCharacterDetailsById(characterId: Long): Flow<State<Character>> {
         return flow {
