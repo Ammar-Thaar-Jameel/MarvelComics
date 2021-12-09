@@ -16,6 +16,7 @@ import com.example.marvelcomics.domain.models.CharacterSearchResult
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.map
 import retrofit2.Response
 import javax.inject.Inject
 
@@ -47,11 +48,14 @@ class MarvelRepositoryImpl @Inject constructor(
     }
 
 
-    override suspend fun transferDataFromEntityToCharacter(): List<Character> {
-        return marvelDataBase.marvelCharactersDao().getCharacters().map { charactersEntity ->
-            baseMapper.mapCharacterEntityToCharacterDomain(charactersEntity)
+    override fun transferDataFromEntityToCharacter(): Flow<List<Character>> =
+        marvelDataBase.marvelCharactersDao().getCharacters().map { charactersListEntity ->
+            charactersListEntity.map { charactersEntity ->
+                baseMapper.mapCharacterEntityToCharacterDomain(charactersEntity)
+            }
+
         }
-    }
+
 
     override suspend fun cachingSearchResult(characterName: String) {
         try {
@@ -66,12 +70,14 @@ class MarvelRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getSearchResult(): List<CharacterSearchResult> {
-        return marvelDataBase.marvelCharactersDao().getSearchResult()
-            .map { charactersSearchEntity ->
-                baseMapper.mapCharacterSearchEntityToCharacterDomain(charactersSearchEntity)
+    override fun getSearchResult(): Flow<List<CharacterSearchResult>> =
+        marvelDataBase.marvelCharactersDao().getSearchResult().map { charactersSearchEntity ->
+            charactersSearchEntity.map {
+                baseMapper.mapCharacterSearchEntityToCharacterDomain(it)
             }
-    }
+
+        }
+
 
     override fun getCharacterDetailsById(characterId: Long): Flow<State<Character>> {
         return flow {

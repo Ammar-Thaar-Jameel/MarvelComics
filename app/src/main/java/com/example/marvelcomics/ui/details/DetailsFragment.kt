@@ -21,5 +21,6 @@ class DetailsFragment :BaseFragment<FragmentDetailsBinding>(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.onItemLoad(args.characterId)
+
     }
 }

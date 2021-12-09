@@ -34,11 +34,11 @@ class HomeNestedAdapter(
                 _items[position] as List<Character>,
                 _listener
             )
-            ViewType.CHARACTERTHREE -> CharacterAdapter(
+            ViewType.CHARACTER_THREE -> CharacterAdapter(
                 _items[position] as List<Character>,
                 _listener
             )
-            ViewType.CHARACTERF -> CharacterAdapter(
+            ViewType.CHARACTER_FOUR -> CharacterAdapter(
                 _items[position] as List<Character>,
                 _listener
             )

@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.marvelcomics.ui.comics.ComicsViewModel" />
+            type="com.example.marvelcomics.ui.character.CharacterViewModel" />
 
     </data>
 
@@ -46,7 +46,7 @@
 
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/comics_recycler_view"
+            android:id="@+id/character_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_margin="@dimen/margin8dp"
@@ -56,6 +56,6 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:spanCount="3"
-            tools:listitem="@layout/item_comics" />
+            tools:listitem="@layout/item_character" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

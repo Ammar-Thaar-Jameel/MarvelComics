@@ -9,9 +9,7 @@
             name="viewModel"
             type="com.example.marvelcomics.ui.search.SearchViewModel" />
 
-        <variable
-            name="adapter"
-            type="com.example.marvelcomics.ui.base.BaseAdapter" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -94,7 +92,6 @@
             android:layout_height="0dp"
             android:layout_margin="@dimen/margin8dp"
             android:visibility="visible"
-            app:adapter="@{adapter}"
             app:items="@{viewModel.characterSearchResult}"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"

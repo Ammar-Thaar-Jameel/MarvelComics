@@ -23,7 +23,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         FragmentHomeBinding::inflate
 
 
-    private val args: HomeFragmentArgs by navArgs()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -52,13 +51,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         })
         viewModel.character.observe(this, { state ->
 
-            adapter.setItemsAt(state as List<Character>, ViewType.CHARACTERTHREE.index)
+            adapter.setItemsAt(state as List<Character>, ViewType.CHARACTER_THREE.index)
 
 
         })
         viewModel.character.observe(this, { state ->
 
-            adapter.setItemsAt(state as List<Character>, ViewType.CHARACTERF.index)
+            adapter.setItemsAt(state as List<Character>, ViewType.CHARACTER_FOUR.index)
 
 
         })

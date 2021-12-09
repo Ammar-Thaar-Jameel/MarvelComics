@@ -9,6 +9,9 @@
             name="item"
             type="com.example.marvelcomics.data.remote.response.CharactersDto" />
 
+        <variable
+            name="listener"
+            type="com.example.marvelcomics.ui.character.CharacterInteractionListener" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -24,7 +27,8 @@
             android:id="@+id/main_constraint"
             style="@style/SearchBar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:onClick="@{()->listener.onItemClicked(item.id)}">
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/item_image"
@@ -32,8 +36,8 @@
                 android:layout_height="0dp"
                 android:elevation="16dp"
                 android:scaleType="centerCrop"
-                app:imageExtension="@{item.thumbnail.path}"
-                app:imagePath="@{item.thumbnail.extension}"
+                app:imageExtension="@{item.thumbnail.extension}"
+                app:imagePath="@{item.thumbnail.path}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"

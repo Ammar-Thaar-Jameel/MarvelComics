@@ -1,4 +1,4 @@
-package com.example.marvelcomics.ui.comics.adapter
+package com.example.marvelcomics.ui.character.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,15 +9,15 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.marvelcomics.R
 import com.example.marvelcomics.data.remote.response.CharactersDto
-import com.example.marvelcomics.databinding.ItemComicsBinding
+import com.example.marvelcomics.databinding.ItemCharacterBinding
 
 @ExperimentalPagingApi
-class AdapterTest : PagingDataAdapter<CharactersDto,
-        AdapterTest.ItemViewHolder>(diffCallback) {
+class CharacterPagingAdapter : PagingDataAdapter<CharactersDto,
+        CharacterPagingAdapter.ItemViewHolder>(diffCallback) {
 
 
     inner class ItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val binding = ItemComicsBinding.bind(view)
+        val binding = ItemCharacterBinding.bind(view)
     }
 
     companion object {
@@ -37,7 +37,8 @@ class AdapterTest : PagingDataAdapter<CharactersDto,
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_comics, parent, false)
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.item_character, parent, false)
 
         return ItemViewHolder(view)
     }

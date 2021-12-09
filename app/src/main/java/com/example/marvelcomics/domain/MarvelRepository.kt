@@ -13,13 +13,11 @@ interface MarvelRepository {
 
     suspend fun cachingCharactersInDataBase()
 
-    suspend fun transferDataFromEntityToCharacter(): List<Character>
+    fun transferDataFromEntityToCharacter(): Flow<List<Character>>
 
     suspend fun cachingSearchResult(characterName: String)
 
-    suspend fun getSearchResult(): List<CharacterSearchResult>
-
-    //suspend fun getCharacterDetails()
+    fun getSearchResult(): Flow<List<CharacterSearchResult>>
 
     fun getCharacterDetailsById(characterId: Long): Flow<State<Character>>
 

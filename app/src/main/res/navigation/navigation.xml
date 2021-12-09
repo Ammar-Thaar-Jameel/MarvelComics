@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/comicsFragment">
+    app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/homeFragment"
@@ -12,7 +12,8 @@
         tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_detailsFragment"
-            app:destination="@id/detailsFragment" />
+            app:destination="@id/detailsFragment"
+            app:popUpTo="@id/homeFragment" />
         <argument
             android:name="characterId"
             app:argType="long" />
@@ -24,7 +25,8 @@
         tools:layout="@layout/fragment_search">
         <action
             android:id="@+id/action_searchFragment_to_detailsFragment"
-            app:destination="@id/detailsFragment" />
+            app:destination="@id/detailsFragment"
+            app:popUpTo="@id/searchFragment" />
         <argument
             android:name="characterId"
             app:argType="long" />
@@ -32,15 +34,22 @@
     <fragment
         android:id="@+id/detailsFragment"
         android:name="com.example.marvelcomics.ui.details.DetailsFragment"
-        android:label="DetailsFragment"
-        tools:layout="@layout/fragment_details">
+        android:label="DetailsFragment">
         <argument
             android:name="characterId"
             app:argType="long" />
     </fragment>
     <fragment
-        android:id="@+id/comicsFragment"
-        android:name="com.example.marvelcomics.ui.comics.ComicsFragment"
-        android:label="ComicsFragment"
-        tools:layout="@layout/fragment_comics"/>
+        android:id="@+id/characterFragment"
+        android:name="com.example.marvelcomics.ui.character.CharacterFragment"
+        android:label="characterFragment"
+        tools:layout="@layout/fragment_character">
+        <action
+            android:id="@+id/action_characterFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment"
+            app:popUpTo="@id/characterFragment" />
+        <argument
+            android:name="characterId"
+            app:argType="long" />
+    </fragment>
 </navigation>

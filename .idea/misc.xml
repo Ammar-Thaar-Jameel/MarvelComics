@@ -9,10 +9,12 @@
         <entry key="..\:/Users/user/AndroidStudioProjects/MarvelComics/app/src/main/res/drawable/ic_details_background.xml" value="0.17592592592592593" />
         <entry key="..\:/Users/user/AndroidStudioProjects/MarvelComics/app/src/main/res/drawable/shape_search_bar.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/user/AndroidStudioProjects/MarvelComics/app/src/main/res/layout/activity_main.xml" value="0.17239583333333333" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/MarvelComics/app/src/main/res/layout/fragment_character.xml" value="0.18645833333333334" />
         <entry key="..\:/Users/user/AndroidStudioProjects/MarvelComics/app/src/main/res/layout/fragment_details.xml" value="0.22" />
         <entry key="..\:/Users/user/AndroidStudioProjects/MarvelComics/app/src/main/res/layout/fragment_home.xml" value="0.18645833333333334" />
-        <entry key="..\:/Users/user/AndroidStudioProjects/MarvelComics/app/src/main/res/layout/fragment_search.xml" value="0.18" />
-        <entry key="..\:/Users/user/AndroidStudioProjects/MarvelComics/app/src/main/res/layout/item_home.xml" value="0.6698412698412698" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/MarvelComics/app/src/main/res/layout/fragment_search.xml" value="0.1" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/MarvelComics/app/src/main/res/layout/item_comics.xml" value="0.1" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/MarvelComics/app/src/main/res/layout/item_home.xml" value="0.5829383886255924" />
         <entry key="..\:/Users/user/AndroidStudioProjects/MarvelComics/app/src/main/res/layout/item_home_character.xml" value="0.18645833333333334" />
         <entry key="..\:/Users/user/AndroidStudioProjects/MarvelComics/app/src/main/res/layout/item_home_character_recycler.xml" value="0.18645833333333334" />
         <entry key="..\:/Users/user/AndroidStudioProjects/MarvelComics/app/src/main/res/layout/item_home_character_top.xml" value="0.4481707317073171" />
@@ -20,7 +22,7 @@
         <entry key="..\:/Users/user/AndroidStudioProjects/MarvelComics/app/src/main/res/layout/item_home_comics_recycler.xml" value="0.18645833333333334" />
         <entry key="..\:/Users/user/AndroidStudioProjects/MarvelComics/app/src/main/res/layout/item_home_recycler.xml" value="0.2" />
         <entry key="..\:/Users/user/AndroidStudioProjects/MarvelComics/app/src/main/res/layout/item_search.xml" value="0.18645833333333334" />
-        <entry key="..\:/Users/user/AndroidStudioProjects/MarvelComics/app/src/main/res/menu/bottom_navigation.xml" value="0.5569948186528497" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/MarvelComics/app/src/main/res/menu/bottom_navigation.xml" value="0.2" />
       </map>
     </option>
   </component>
