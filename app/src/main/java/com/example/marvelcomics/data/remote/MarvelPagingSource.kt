@@ -9,6 +9,7 @@ import java.io.IOException
 class MarvelPagingSource(
     private val apiService: MarvelService
 ) : PagingSource<Int, CharactersDto>() {
+    override val keyReuseSupported: Boolean = true
     override fun getRefreshKey(state: PagingState<Int, CharactersDto>): Int? {
         return null
     }
