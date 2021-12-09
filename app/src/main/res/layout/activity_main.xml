@@ -31,7 +31,7 @@
             android:id="@+id/bubbleTabBar"
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:background="@color/background_color"
+            android:background="@color/brandColor"
             android:elevation="16dp"
             android:padding="7dp"
             app:bubbletab_menuResource="@menu/bottom_navigation"
