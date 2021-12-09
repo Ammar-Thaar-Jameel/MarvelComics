@@ -1,9 +1,15 @@
 package com.example.marvelcomics.domain
 
 import android.util.Log
+import androidx.paging.ExperimentalPagingApi
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
 import com.example.marvelcomics.data.lacal.MarvelDataBase
+import com.example.marvelcomics.data.remote.MarvelPagingSource
 import com.example.marvelcomics.data.remote.MarvelService
 import com.example.marvelcomics.data.remote.State
+import com.example.marvelcomics.data.remote.response.CharactersDto
 import com.example.marvelcomics.domain.mapper.BaseMapper
 import com.example.marvelcomics.domain.models.Character
 import com.example.marvelcomics.domain.models.CharacterSearchResult
@@ -13,6 +19,8 @@ import kotlinx.coroutines.flow.flow
 import retrofit2.Response
 import javax.inject.Inject
 
+
+@ExperimentalPagingApi
 class MarvelRepositoryImpl @Inject constructor(
     private val apiService: MarvelService,
     private val marvelDataBase: MarvelDataBase,
@@ -81,6 +89,14 @@ class MarvelRepositoryImpl @Inject constructor(
             }
         }
 
+    }
+
+
+    override fun getCharacterByPaging(pagingConfig: PagingConfig): Flow<PagingData<CharactersDto>> {
+        return Pager(
+            config = pagingConfig,
+            pagingSourceFactory = { MarvelPagingSource(apiService) }
+        ).flow
     }
 
 

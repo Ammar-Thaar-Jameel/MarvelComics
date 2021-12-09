@@ -1,5 +1,6 @@
 package com.example.marvelcomics.di
 
+import androidx.paging.ExperimentalPagingApi
 import com.example.marvelcomics.data.lacal.MarvelDataBase
 import com.example.marvelcomics.data.remote.MarvelService
 import com.example.marvelcomics.domain.MarvelRepository
@@ -13,6 +14,7 @@ import org.mapstruct.factory.Mappers
 
 @Module
 @InstallIn(SingletonComponent::class)
+@ExperimentalPagingApi
 object RepositoryModule {
 
     @Provides
@@ -31,5 +33,5 @@ object RepositoryModule {
 
 
     @Provides
-    fun provideMapper() : BaseMapper = Mappers.getMapper(BaseMapper::class.java)
+    fun provideMapper(): BaseMapper = Mappers.getMapper(BaseMapper::class.java)
 }

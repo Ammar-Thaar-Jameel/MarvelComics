@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/comicsFragment">
 
     <fragment
         android:id="@+id/homeFragment"
@@ -38,4 +38,9 @@
             android:name="characterId"
             app:argType="long" />
     </fragment>
+    <fragment
+        android:id="@+id/comicsFragment"
+        android:name="com.example.marvelcomics.ui.comics.ComicsFragment"
+        android:label="ComicsFragment"
+        tools:layout="@layout/fragment_comics"/>
 </navigation>

@@ -18,9 +18,9 @@ interface MarvelDao {
     suspend fun getCharacters(): List<CharactersEntity>
 
 
-    @Insert (onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addSearchResult(items: List<CharacterSearchEntity>)
 
     @Query("SELECT * FROM CharacterSearchEntity")
-    suspend fun getSearchResult():List<CharacterSearchEntity>
+    suspend fun getSearchResult(): List<CharacterSearchEntity>
 }

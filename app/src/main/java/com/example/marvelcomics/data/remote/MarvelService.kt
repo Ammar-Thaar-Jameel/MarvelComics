@@ -2,25 +2,12 @@ package com.example.marvelcomics.data.remote
 
 import com.example.marvelcomics.data.remote.response.BaseResponse
 import com.example.marvelcomics.data.remote.response.CharactersDto
-import com.example.marvelcomics.data.remote.response.Data
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface MarvelService {
-
-//    @GET("/characters")
-//    suspend fun getCharacters(
-////        @Query("ts") ts: String = "12345678",
-////        @Query("apikey") apiKey: String = Constant.PUBLIC_API_KEY,
-////        @Query("hash") hash: String = "c05fa4d2443d606ac15bdbdbc603d3b0"
-//    ): Response<Data>
-//
-//    @GET("characters")
-//    suspend fun getAllCharacters(): Response<BaseResponse>
-
-
 
 
     @GET("characters")
@@ -31,17 +18,15 @@ interface MarvelService {
         @Query("nameStartsWith") characterName: String,
     ): Response<BaseResponse<CharactersDto>>
 
-
-//    @GET("characters")
-//    suspend fun getCharactersById(
-//        @Query("nameStartsWith") characterName: Long,
-//    ): Response<BaseResponse<Data<CharactersDto>>>
-
-
-
-
     @GET("characters/{characterId}")
     suspend fun getCharactersById(
         @Path("characterId") characterId: Long,
     ): Response<BaseResponse<CharactersDto>>
+
+    @GET("characters")
+    suspend fun getAllCharactersByPaging(
+        @Query("limit") limit: Int,
+    ): Response<BaseResponse<CharactersDto>>
+
+
 }
